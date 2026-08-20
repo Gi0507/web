@@ -1,48 +1,33 @@
-<h3>doação de sangue</h3>
+<h1 style="color: red;">Contato</h1>
+
+<h2>Seja bem vindo prencher o formulário a baixo para:</h2>
+
+<ul>
+  <li>Duvidas</li>
+  <li>Sugestões</li>
+  <li>Criticas</li>
+  <li>Orçamentos</li>
+</ul>
 
 
-nome:<input type="text" id="nome" 
-placeholder="Digite seu nome completo"required><br>
-email:<input type="email" id="email"
-placeholder="Digite seu email" required><br>    
-password:<input type="password" id="senha"
-placeholder="Digite sua senha" required><br>
-idade:<input type="number" id="idade"
-placeholder="Digite sua idade" min="18"
-max="65" required><br>
-peso:<input type="number" id="peso"
-placeholder="Digite seu peso" min="50" max="200" required><br>
-data de nascimento:<input type="date" id="data" required><br>
+Caso queira ver nossos produtos clique <a href="/produtos">aqui</a><br>
+Nome: <input type="text" name="nome" id="nome" placeholder="Digite seu nome"><br>
+E-mail: <input type="email" name="email" id="email" placeholder="Digite seu email"><br>
+telefone: <input type="tel" name="telefone" id="telefone" placeholder="Digite seu telefone" pattern="[0-9]{5}-[0-9]{4}"><br>
 
 
-tipo sanguineo:<select id="opap" required>
-  <option value="">Selecione...</option>
-  <option value="A+">A+</option>
-  <option value="A-">A-</option>
-  <option value="B+">B+</option>
-  <option value="B-">B-</option>
-  <option value="AB+">AB+</option>
-  <option value="AB-">AB-</option>
-  <option value="O+">O+</option>
-  <option value="O-">O-</option>
-</select><br> 
+Assunto: <select name="assunto" id="assunto">
+  <option value="duvidas">Duvidas</option>
+  <option value="sugestoes">Sugestões</option>
+  <option value="criticas">Criticas</option>
+  <option value="orcamentos">Orçamentos</option>
+</select><br>
 
 
-sexo:<br>
-<input type ="radio" name="sexo" value="masculino" required>Masculino
-<input type ="radio" name="sexo" value="feminino" required>Feminino<br>
+Deseja receber uma copia deste e-mail?
+<input type="radio" name="copia" id="sim" value="sim">Sim
+<input type="radio" name="copia" id="nao" value="nao">Não<br>
 
 
-condiçoes:<br>
-<input type="checkbox" id ="sangue">Duou sangue nos ultimos 6 meses?<br>
-<input type="checkbox" id ="gravida">Esta gravida?<br>
-<input type="checkbox" id ="Alcool">Ingeriu álcool nos últimos 3 dias?<br>
-<input type="checkbox" id ="tatuagem">Fez tatuagem nos ultimos 3 meses?<br>
-
-
-mensagem:<br>
-<textarea id="mensagem" id="msg" rows="4" cols="50" right placeholder="Conte sobre voce..."></textarea><br>
-
-telefone:<input type="text" id="telefone" name="telefone" pattern="[0-9]{4,5}[0-9]{4}"
-placeholder="Digite seu telefone" required><br>
-<button>Enviar</button>
+mensagem: <textarea name="mensagem" id="mensagem" cols="30" rows="10" placeholder="Digite sua mensagem"></textarea><br>
+<button type="submit">Enviar</button>
