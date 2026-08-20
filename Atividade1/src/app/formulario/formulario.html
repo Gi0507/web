@@ -11,9 +11,9 @@
 
 
 Caso queira ver nossos produtos clique <a href="/produtos">aqui</a><br>
-Nome: <input type="text" name="nome" id="nome" placeholder="Digite seu nome"><br>
-E-mail: <input type="email" name="email" id="email" placeholder="Digite seu email"><br>
-telefone: <input type="tel" name="telefone" id="telefone" placeholder="Digite seu telefone" pattern="[0-9]{5}-[0-9]{4}"><br>
+Nome: <input type="text" name="nome" id="nome" placeholder="Digite seu nome" required><br>
+E-mail: <input type="email" name="email" id="email" placeholder="Digite seu email" required><br>
+telefone: <input type="tel" name="telefone" id="telefone" placeholder="99999-9999" required pattern="[0-9]{5}-[0-9]{4}"><br>
 
 
 Assunto: <select name="assunto" id="assunto">
@@ -25,9 +25,9 @@ Assunto: <select name="assunto" id="assunto">
 
 
 Deseja receber uma copia deste e-mail?
-<input type="radio" name="copia" id="sim" value="sim">Sim
-<input type="radio" name="copia" id="nao" value="nao">Não<br>
+<input type="radio" name="copia" id="sim" value="sim" required>Sim
+<input type="radio" name="copia" id="nao" value="nao" required>Não<br>
 
 
-mensagem: <textarea name="mensagem" id="mensagem" cols="30" rows="10" placeholder="Digite sua mensagem"></textarea><br>
+mensagem: <textarea name="mensagem" id="mensagem" cols="30" rows="10" placeholder="Digite sua mensagem" required></textarea><br>
 <button type="submit">Enviar</button>
