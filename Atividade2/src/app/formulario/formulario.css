@@ -51,6 +51,7 @@ input,select {
 }
 
 .formulario {
+    justify-content: center;
     margin: 10%;
     margin-top: 0;
     padding: 15px;
@@ -75,4 +76,18 @@ input,select {
 
 #mensagem {
     width: 100%;
+}
+
+
+@media screen and (max-width: 800px) {
+    .baner{
+        font-size: 50;
+    }
+    button {
+        justify-content: center;
+        width: 100%;
+    }
+    .perguntas{
+        grid-column: 1;
+    }
 }
