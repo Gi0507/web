@@ -1,0 +1,43 @@
+<head>
+  <h1 class="baner" style="color: white;">Cadastro banco sanguenio</h1>
+  <link rel="stylesheet" href="formulario.css">
+</head>
+
+<div class="formulario"> 
+  
+  
+  Seja bem vindo prencher o formulário a baixo para:
+  <ul>
+    <li><a href>Duvidas</a></li>
+    <li><a href>Sugestões</a></li>
+    <li><a href>Criticas</a></li>
+    <li><a href>Orçamentos</a></li>
+  </ul>
+  
+  
+  Caso queira ver nossos produtos clique <a href="/produtos">aqui</a><br>
+  <div class="perguntas">
+    <label>Nome</label> <input type="text" name="nome" id="nome" placeholder="Digite seu nome" required><br>
+    <label>E-mail</label> <input type="email" name="email" id="email" placeholder="Digite seu email" required><br>
+    <label>telefone</label> <input type="tel" name="telefone" id="telefone" placeholder="99999-9999" required pattern="[0-9]{5}-[0-9]{4}"><br>
+    
+    
+    <label>Assunto</label> <select name="assunto" id="assunto">
+      <option class="assunto" value="" disabled selected>...</option>
+      <option class="assunto" value="duvidas">Duvidas</option>
+      <option class="assunto" value="sugestoes">Sugestões</option>
+      <option class="assunto" value="criticas">Criticas</option>
+      <option class="assunto" value="orcamentos">Orçamentos</option>
+    </select><br>
+    
+    
+    Deseja receber uma copia deste e-mail?<br>
+    <input type="radio" name="copia" id="sim" value="sim" required>Sim
+    <input type="radio" name="copia" id="nao" value="nao" required>Não<br>
+    
+    
+    <label>Mensagem:</label><br>
+    <textarea name="mensagem" id="mensagem" cols="30" rows="10" placeholder="Digite sua mensagem" required></textarea><br>
+  </div>
+<button type="submit">Enviar</button>
+</div>
