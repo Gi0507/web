@@ -1,0 +1,11 @@
+<h3>Sua Cesta de Compras</h3>
+<ul class="painelcesta" *ngIf="list && vazia == false">
+  <li *ngFor="let item of list">
+    cesta: {{ item.produto }} - quantidade: {{ item.quantidade }} - preço total: R$ {{ item.precoTotal.toFixed(2) }}
+  </li>
+</ul>
+
+<p *ngIf="!list || vazia == true" class="text-muted">
+  Sua cesta está vazia.
+</p>
+<p>Valor Total: R$ {{ valorTotal.toFixed(2) }}</p>
