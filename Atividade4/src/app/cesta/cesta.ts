@@ -9,10 +9,14 @@ import { CommonModule } from '@angular/common'; // 1. Certifique-se de importar 
   styleUrl: './cesta.css'
 })
 export class CestaComponent {
-  list = [
-    { produto: 'Relógio Relogio Executive', quantidade: 1, precoTotal: 4500.00 },
-    { produto: 'Relógio Speed Sport', quantidade: 2, precoTotal: 2400.00 }
-  ];
-  vazia: boolean = false;
-  valorTotal: number = 6900.00;
+  
+  constructor() {
+    var total = 0
+    var quantidade = 0
+    var lista
+
+  }
+  calcularTotal() {
+    this.total = this.list.reduce((acc, item) => acc + item.precoTotal, 0);
+  }
 }
