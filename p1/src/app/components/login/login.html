@@ -1,0 +1,29 @@
+<div class="container my-5" style="max-width: 450px;">
+  <div class="card shadow p-4 rounded-3">
+    <h3 class="text-center mb-4">Entrar na Conta</h3>
+
+    <div *ngIf="mensagemErro" class="alert alert-danger">{{ mensagemErro }}</div>
+
+    <form (ngSubmit)="entrar()">
+      <div class="mb-3">
+        <label class="form-label">E-mail</label>
+        <input type="email" class="form-control" [(ngModel)]="dadosLogin.email" name="email" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Palavra-passe</label>
+        <input type="password" class="form-control" [(ngModel)]="dadosLogin.senha" name="senha" required>
+        <!-- Link Esqueci minha senha -->
+        <div class="text-end mt-1">
+          <a href="javascript:void(0)" (click)="esqueciSenha()" class="small text-decoration-none">Esqueci a minha senha</a>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 fw-bold">Entrar</button>
+    </form>
+
+    <div class="text-center mt-3">
+      <small>Ainda não tem conta? <a routerLink="/cadastro">Registe-se aqui</a></small>
+    </div>
+  </div>
+</div>

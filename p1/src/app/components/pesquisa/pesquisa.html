@@ -1,0 +1,17 @@
+<div class="barra_pesquisa">
+  <div class="input-container">
+    <input 
+      type="text" 
+      placeholder="Pesquisar relógios por nome, categoria..." 
+      [(ngModel)]="this['termoBusca']" 
+      (input)="this['filtrarProdutos']()">
+    
+    <!-- Botão de limpar a pesquisa (aparece só quando há texto) -->
+    <button 
+      *ngIf="this['termoBusca']" 
+      class="btn-limpar" 
+      (click)="this['limparBusca']()">
+      ✕
+    </button>
+  </div>
+</div>
