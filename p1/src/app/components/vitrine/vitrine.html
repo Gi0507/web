@@ -6,9 +6,7 @@
 
 <!-- SECÇÃO LINHA OMNITRIX COM FUNDO ESCURO -->
 <div class="background py-4" *ngIf="produtosOmnitrix.length > 0">
-  <div class="conteudo produtos">
-    <h3 class="titulo text-white">Linha Omnitrix</h3>
-    <div class="underline"></div>
+  
 
     <div class="omnitrix-grid">
       <div class=" card-omnitrix p-3 rounded-3" *ngFor="let relogio of produtosOmnitrix.slice(0, 3)">
@@ -61,7 +59,7 @@
   </div>
     </div>
   </div>
-      </div>
+  
 
   <!-- VITRINE DE PRODUTOS SELECIONADOS -->
   <div class="produtos conteudo" *ngIf="produtosSelecionados.length > 0">
