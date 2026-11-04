@@ -1,0 +1,129 @@
+/* cadastro.css */
+
+/* Centraliza o componente vertical e horizontalmente no ecrã */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+  width: 100%;
+  padding: 20px 0;
+}
+
+/* Largura máxima do container ajustada para dar espaço aos campos */
+.container {
+  max-width: 650px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  width: 100%;
+}
+
+/* Card Principal de Registo */
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 20px !important;
+  background-color: #ffffff;
+  padding: 3rem 3.5rem !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14) !important;
+}
+
+/* Título */
+.card h3 {
+  color: #1a202c;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+  margin-bottom: 1.75rem !important;
+}
+
+/* Rótulos e Campos de Entrada */
+.form-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  padding: 0.85rem 1.15rem;
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  font-size: 1.05rem;
+  background-color: #f8fafc;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-control:focus {
+  background-color: #ffffff;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.15);
+  outline: none;
+}
+
+/* Botão Registar */
+.btn-primary {
+  padding: 0.9rem 1.25rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+  border: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0b5ed7 0%, #084298 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(13, 110, 253, 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Texto de Rodapé e Links */
+small {
+  font-size: 0.95rem;
+  color: #718096;
+}
+
+a {
+  color: #0d6efd;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #0a58ca;
+  text-decoration: underline;
+}
+
+/* Mensagens de Alerta (Erro e Sucesso) */
+.alert {
+  border-radius: 12px;
+  font-size: 0.95rem;
+  border: none;
+  padding: 0.85rem 1.15rem;
+  margin-bottom: 1.5rem;
+}
+
+.alert-danger {
+  background-color: #fff5f5;
+  color: #e53e3e;
+  box-shadow: inset 0 0 0 1px rgba(229, 62, 62, 0.2);
+}
+
+.alert-success {
+  background-color: #f0fff4;
+  color: #276749;
+  box-shadow: inset 0 0 0 1px rgba(56, 161, 105, 0.2);
+}

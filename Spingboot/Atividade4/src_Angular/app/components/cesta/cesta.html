@@ -1,0 +1,60 @@
+<h3>Sua cesta de compras</h3>
+<div class="underline"></div>
+
+<div class="alert alert-info my-3" *ngIf="mensagem.length > 0">{{ mensagem }}</div>
+
+<table class="table align-middle">
+  <thead>
+    <tr>
+      <th>Imagem</th>
+      <th>Item</th>
+      <th class="text-center">Quantidade</th>
+      <th>Valor</th>
+      <th class="text-center">Remover</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let obj of itens">
+      <td>
+        <img [src]="obj.produto?.imagem" [alt]="obj.produto?.nome" width="80" class="img-thumbnail" />
+      </td>
+      <td>
+        <b>{{ obj.produto?.nome }}</b><br />
+        <small class="text-muted">{{ obj.produto?.descritivo }}</small>
+      </td>
+      <td class="text-center">
+        <div class="btn-group btn-group-sm" role="group">
+          <button class="btn btn-outline-secondary" (click)="diminuir(obj.produto?.codigo)">-</button>
+          <span class="btn btn-light disabled">{{ obj.quantity }}</span>
+          <button class="btn btn-outline-secondary" (click)="aumentar(obj.produto?.codigo)">+</button>
+        </div>
+      </td>
+      <td>R$ {{ obj.valorTotal }}</td>
+      <td class="text-center">
+        <button class="btn btn-danger btn-sm" (click)="remover(obj.produto?.codigo)">
+          &times;
+        </button>
+      </td>
+    </tr>
+    <tr *ngIf="itens.length === 0">
+      <td colspan="5" class="text-center py-4">Sua cesta está vazia.</td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="itens.length > 0">
+    <tr>
+      <td colspan="3" class="fw-bold">Total</td>
+      <td colspan="2" class="fw-bold text-end">R$ {{ valorCesta }}</td>
+    </tr>
+  </tfoot>
+</table>
+
+<div class="botoes">
+  <button class="btn btn-outline-danger me-2" (click)="limpar()" *ngIf="itens.length > 0">Limpar Cesta</button>
+  <a href="/"><button class="btn btn-outline-info">Continuar comprando</button></a>
+ <button 
+  class="btn btn-success ms-2" 
+  [disabled]="itens.length === 0"
+  (click)="finalizarPedido()">
+  Finalizar pedido
+</button>
+</div>
