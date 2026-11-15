@@ -1,12 +1,20 @@
 package com.ads.Lojinha.modelo;
 
+import  com.ads.Lojinha.modelo.Cesta;
+import  com.ads.Lojinha.modelo.Cliente;
+
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -19,7 +27,7 @@ public class Cesta {
 
     @OneToOne
     @JoinColumn(name = "cpf_cliente", referencedColumnName = "cpf")
-    private cliente cliente;
+    private Cliente cliente;
 
     @OneToMany(
         mappedBy = "cesta",
@@ -27,32 +35,6 @@ public class Cesta {
         orphanRemoval = true
     )
     private List<ItemCesta> itens = new ArrayList<>();
-
-    public Cesta() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Object cliente) {
-        this.cliente = cliente;
-    }
-
-    public List<ItemCesta> getItens() {
-        return itens;
-    }
-
-    public void setItens(List<ItemCesta> itens) {
-        this.itens = itens;
-    }
+    private double ValorTotal;
 
 }

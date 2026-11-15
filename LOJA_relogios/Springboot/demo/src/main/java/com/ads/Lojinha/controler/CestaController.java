@@ -3,7 +3,6 @@ package com.ads.Lojinha.controler;
 
 import com.ads.Lojinha.modelo.Cesta;
 import com.ads.Lojinha.modelo.ItemCesta;
-import com.ads.Lojinha.modelo.cliente;
 import com.ads.Lojinha.modelo.Produto;
 
 import com.ads.Lojinha.Repository.CestaRepository;

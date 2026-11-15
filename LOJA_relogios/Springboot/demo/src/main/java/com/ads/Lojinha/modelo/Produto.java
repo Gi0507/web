@@ -19,7 +19,7 @@ import lombok.Setter;
 public class Produto {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private int codigo;
+    private int id;
     private String nome;
     private String descritivo;
     private double valor;

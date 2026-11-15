@@ -2,7 +2,7 @@ package com.ads.Lojinha.service;
 
 import com.ads.Lojinha.Repository.ClienteRepository;
 import com.ads.Lojinha.dto.loginDTO;
-import com.ads.Lojinha.modelo.cliente;
+import com.ads.Lojinha.modelo.Cliente;
 
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,7 +23,7 @@ public class ClienteService {
 
     public boolean login(loginDTO dados) {
 
-        cliente usuario = repository
+        Cliente usuario = repository
                 .findByEmail(dados.email())
                 .orElse(null);
 
