@@ -7,11 +7,13 @@ import com.ads.Lojinha.modelo.Cesta;
 import com.ads.Lojinha.modelo.ItemCesta;
 import com.ads.Lojinha.modelo.Produto;
 import com.ads.Lojinha.modelo.Cliente;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
-import java.util.Optional;
+import java.util.Objects;
 
 @Service
 public class CestaService {
@@ -28,71 +30,73 @@ public class CestaService {
         this.produtoRepository = produtoRepository;
     }
 
-    // Busca a cesta ativa do cliente ou cria uma nova vazia
-    public Cesta buscarOuCriarCesta(Long clienteId) {
-        Cliente cli = clienteRepository.findById(clienteId)
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
-
-        return cestaRepository.findByClienteId(clienteId)
-                .orElseGet(() -> {
-                    Cesta novaCesta = new Cesta();
-                    novaCesta.setCliente(cli);
-                    novaCesta.setItens(new ArrayList<>());
-                    novaCesta.setValorTotal(0.0);
-                    return cestaRepository.save(novaCesta);
-                });
-    }
-
-    // Adiciona um relógio à cesta (se já existir, apenas incrementa a quantidade)
     @Transactional
-    public Cesta adicionarItem(Long clienteId, Long produtoId, int quantidade) {
-        Cesta cesta = buscarOuCriarCesta(clienteId);
-        Produto produto = produtoRepository.findById(produtoId)
-                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
-
-        Optional<ItemCesta> itemExistente = cesta.getItens().stream()
-                .filter(item -> item.getProduto().getId().equals(produtoId))
-                .findFirst();
-
-        if (itemExistente.isPresent()) {
-            ItemCesta item = itemExistente.get();
-            item.setQuantidade(item.getQuantidade() + quantidade);
-            item.setValorTotal(item.getQuantidade() * produto.getValor());
-        } else {
-            ItemCesta novoItem = new ItemCesta();
-            novoItem.setCesta(cesta);
-            novoItem.setProduto(produto);
-            novoItem.setQuantidade(quantidade);
-            novoItem.setValorTotal(quantidade * produto.getValor());
-            cesta.getItens().add(novoItem);
+    public Cesta criarCesta(String cpf) {
+        if (cestaRepository.existsByClienteCpf(cpf)) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Este cliente já possui uma cesta.");
         }
 
-        recalcularTotal(cesta);
+        Cliente clienteEncontrado = clienteRepository.findByCpf(cpf)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado.");
+
+        Cesta novaCesta = new Cesta();
+        novaCesta.setCliente(clienteEncontrado);
+        if (novaCesta.getItens() == null) {
+            novaCesta.setItens(new ArrayList<>());
+        }
+
+        return cestaRepository.save(novaCesta);
+    }
+
+    public Cesta buscarPorCliente(String cpf) {
+        return cestaRepository.findByClienteCpf(cpf)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cesta não encontrada."));
+    }
+
+    @Transactional
+    public Cesta adicionarProduto(String cpf, Long produtoId, Integer quantidade) {
+        if (quantidade == null || quantidade <= 0) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "A quantidade deve ser maior que zero.");
+        }
+
+        Cesta cesta = buscarPorCliente(cpf);
+
+        Produto produto = produtoRepository.findById(produtoId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado."));
+
+        for (ItemCesta item : cesta.getItens()) {
+            if (Objects.equals(item.getProduto().getId(), produto.getId())) {
+                item.setQuantidade(item.getQuantidade() + quantidade);
+                return cestaRepository.save(cesta);
+            }
+        }
+
+        ItemCesta novoItem = new ItemCesta();
+        novoItem.setCesta(cesta);
+        novoItem.setProduto(produto);
+        novoItem.setQuantidade(quantidade);
+
+        cesta.getItens().add(novoItem);
         return cestaRepository.save(cesta);
     }
 
-    // Remove um item específico da cesta
     @Transactional
-    public Cesta removerItem(Long clienteId, Long produtoId) {
-        Cesta cesta = buscarOuCriarCesta(clienteId);
-        cesta.getItens().removeIf(item -> item.getProduto().getId().equals(produtoId));
-        recalcularTotal(cesta);
-        return cestaRepository.save(cesta);
-    }
+    public void removerProduto(String cpf, Long itemId) {
+        Cesta cesta = buscarPorCliente(cpf);
 
-    // Esvazia a cesta (útil após finalizar o pedido)
-    @Transactional
-    public void limparCesta(Long clienteId) {
-        Cesta cesta = buscarOuCriarCesta(clienteId);
-        cesta.getItens().clear();
-        cesta.setValorTotal(0.0);
+        boolean removido = cesta.getItens()
+                .removeIf(item -> Objects.equals(item.getId(), itemId));
+
+        if (!removido) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item não encontrado na cesta.");
+        }
+
         cestaRepository.save(cesta);
     }
 
-    private void recalcularTotal(Cesta cesta) {
-        double total = cesta.getItens().stream()
-                .mapToDouble(ItemCesta::getValorTotal)
-                .sum();
-        cesta.setValorTotal(total);
+    @Transactional
+    public void excluirCesta(String cpf) {
+        Cesta cesta = buscarPorCliente(cpf);
+        cestaRepository.delete(cesta);
     }
 }

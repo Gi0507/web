@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface CestaRepository extends JpaRepository<Cesta, Long> {
 
     Optional<Cesta> findByClienteCpf(String cpf);
+    boolean existsByClienteCpf(String cpf);
 }

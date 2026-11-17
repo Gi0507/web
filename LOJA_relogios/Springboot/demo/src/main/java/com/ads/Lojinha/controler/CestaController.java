@@ -95,7 +95,7 @@ public class CestaController {
 
         // Verifica se o produto já está na cesta
         for (ItemCesta item : cesta.getItens()) {
-            if (item.getProduto().getCodigo() == produto.getCodigo()) {
+            if (item.getProduto().getId() == produto.getId()) {
 
                 item.setQuantidade(item.getQuantidade() + quantidade);
 
