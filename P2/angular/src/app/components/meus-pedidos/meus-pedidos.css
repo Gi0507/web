@@ -1,0 +1,267 @@
+.pedidos-wrapper {
+  max-width: 1100px;
+  min-height: 70vh;
+  margin: 2rem auto;
+  padding: 0 1.5rem 3rem;
+}
+
+.pedidos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.pedidos-header h2 {
+  font-size: 1.75rem;
+  color: #2c2c2c;
+}
+
+.underline-left {
+  width: 80px;
+  height: 4px;
+  background-color: #09ff00;
+  border-radius: 999px;
+  margin-top: 6px;
+}
+
+.subtitulo {
+  margin-top: 0.6rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.acoes-topo {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.btn-primario,
+.btn-secundario {
+  display: inline-block;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primario {
+  background-color: #2c2c2c;
+  color: #ffffff;
+  border: 2px solid #2c2c2c;
+}
+
+.btn-primario:hover {
+  background-color: #09ff00;
+  color: #1a1a1a;
+  border-color: #09ff00;
+}
+
+.btn-secundario {
+  background-color: #ffffff;
+  color: #2c2c2c;
+  border: 2px solid #2c2c2c;
+}
+
+.btn-secundario:hover {
+  background-color: #2c2c2c;
+  color: #ffffff;
+}
+
+.alerta {
+  padding: 0.9rem 1.2rem;
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.alerta-info {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #a5d6a7;
+}
+
+.estado-box {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.estado-box h3 {
+  color: #2c2c2c;
+  margin-bottom: 0.5rem;
+}
+
+.estado-box p {
+  color: #666;
+  margin-bottom: 1.2rem;
+}
+
+.lista-pedidos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pedido-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e5e5;
+}
+
+.pedido-card-header {
+  background-color: #2c2c2c;
+  color: #ffffff;
+  padding: 1rem 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pedido-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: #bdbdbd;
+  letter-spacing: 0.5px;
+}
+
+.meta-valor {
+  font-size: 0.98rem;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+.destaque-total {
+  color: #09ff00;
+}
+
+.pedido-status-area {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.badge-concluido {
+  background-color: rgba(9, 255, 0, 0.16);
+  color: #09ff00;
+  border: 1px solid rgba(9, 255, 0, 0.55);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.btn-email {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-email:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.btn-email:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pedido-card-body {
+  padding: 1rem 1.4rem;
+  overflow-x: auto;
+}
+
+.tabela-itens {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela-itens th {
+  text-align: left;
+  padding: 0.65rem 0.5rem;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  color: #666;
+  border-bottom: 2px solid #eeeeee;
+}
+
+.tabela-itens td {
+  padding: 0.8rem 0.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+.tabela-itens tr:last-child td {
+  border-bottom: none;
+}
+
+.produto-info {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.produto-info strong {
+  display: block;
+  color: #222;
+  font-size: 0.95rem;
+}
+
+.produto-info small {
+  display: block;
+  color: #777;
+  font-size: 0.8rem;
+  max-width: 420px;
+}
+
+.produto-thumb {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background-color: #fafafa;
+}
+
+.centro {
+  text-align: center !important;
+}
+
+.direita {
+  text-align: right !important;
+}
+
+@media (max-width: 700px) {
+  .pedido-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

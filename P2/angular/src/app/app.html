@@ -1,0 +1,43 @@
+<div class="navbar" [class.show-menu]="isMenuOpen">
+  <div class="Header">
+    <h1 class="logo"><a routerLink="/" style="text-decoration: none; color: inherit;">Time<span>STOR</span></a></h1>
+    
+    <nav class="nav-links">
+      <ul>
+        <li><a routerLink="/" (click)="isMenuOpen = false">Home</a></li>
+        <ng-container *ngIf="!clienteLogado">
+          <li><a routerLink="/login" (click)="isMenuOpen = false">Login</a></li>
+          <li><a routerLink="/cadastro" (click)="isMenuOpen = false">Cadastro</a></li>
+        </ng-container>
+        <li *ngIf="clienteLogado">
+          <a routerLink="/meus-pedidos" (click)="isMenuOpen = false">Meus Pedidos</a>
+        </li>
+        <li *ngIf="clienteLogado" class="status-logado-item">
+          <div class="status-logado" title="Sessão ativa">
+            <span class="indicador-online"></span>
+            <span>Logado: <strong>{{ clienteLogado.nome || clienteLogado.email }}</strong></span>
+            <button type="button" class="btn-sair" (click)="sair()">Sair</button>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    
+    <div class="icons">   
+      <img src="pesquisa.webp" alt="Pesquisa" (click)="togglePesquisa()">
+      <a routerLink="/cesta"><img src="cart.png" class="cesta" alt="Carrinho"></a>
+      <img src="menu.png" class="menu-icon" alt="Menu" (click)="toggleMenu()">
+    </div>
+  </div>
+</div>
+<app-pesquisa></app-pesquisa>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer>
+  <div class="footer-container">
+    <!-- Imagem de um lado -->
+    <img src="/play stor.webp" alt="Logo da Empresa" class="footer-logo">
+    <h1>Conheça nosso app</h1>
+  </div>
+</footer>

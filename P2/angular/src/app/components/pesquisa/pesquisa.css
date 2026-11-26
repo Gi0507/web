@@ -1,0 +1,74 @@
+.barra_pesquisa {
+  background-color: #2c2c2c;
+  padding: 0.85rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: center;
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 720px;
+  gap: 8px;
+}
+
+.barra_pesquisa input {
+  flex: 1;
+  width: 100%;
+  padding: 10px 40px 10px 18px;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: 1.5px solid #09ff00;
+  outline: none;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.barra_pesquisa input::placeholder {
+  color: #aaaaaa;
+}
+
+.barra_pesquisa input:focus {
+  box-shadow: 0 0 8px rgba(9, 255, 0, 0.45);
+}
+
+.btn-limpar {
+  position: absolute;
+  right: 96px;
+  background: transparent;
+  border: none;
+  color: #cccccc;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.btn-limpar:hover {
+  color: #ffffff;
+}
+
+.btn-buscar {
+  background-color: #09ff00;
+  color: #141414;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-buscar:hover {
+  background-color: #07d600;
+}
+
+.btn-buscar:active {
+  transform: scale(0.98);
+}

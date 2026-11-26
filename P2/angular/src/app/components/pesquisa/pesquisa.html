@@ -1,0 +1,29 @@
+<div class="barra_pesquisa">
+  <div class="input-container">
+    <input
+      #campoBusca
+      type="text"
+      placeholder="Pesquisar relógios por nome, marca ou categoria..."
+      [(ngModel)]="termoBusca"
+      (input)="filtrarProdutos()"
+      (keyup.enter)="buscar()"
+      aria-label="Pesquisar relógios">
+
+    <button
+      *ngIf="termoBusca"
+      type="button"
+      class="btn-limpar"
+      title="Limpar pesquisa"
+      (click)="limparBusca()">
+      ✕
+    </button>
+
+    <button
+      type="button"
+      class="btn-buscar"
+      title="Pesquisar"
+      (click)="buscar()">
+      Buscar
+    </button>
+  </div>
+</div>

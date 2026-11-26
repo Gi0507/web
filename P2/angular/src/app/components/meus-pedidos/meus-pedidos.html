@@ -1,0 +1,112 @@
+<section class="pedidos-wrapper">
+  <div class="pedidos-header">
+    <div>
+      <h2>Meus Pedidos</h2>
+      <div class="underline-left"></div>
+      <p class="subtitulo" *ngIf="clienteLogado">
+        Histórico de compras de <strong>{{ clienteLogado.nome || clienteLogado.email }}</strong>
+      </p>
+    </div>
+
+    <div class="acoes-topo">
+      <button
+        type="button"
+        class="btn-secundario"
+        *ngIf="clienteLogado && !carregando"
+        (click)="carregarPedidos()">
+        Atualizar
+      </button>
+      <a routerLink="/" class="btn-primario">Voltar à Vitrine</a>
+    </div>
+  </div>
+
+  <div class="alerta alerta-info" *ngIf="avisoAcao">
+    {{ avisoAcao }}
+  </div>
+
+  <!-- Carregando -->
+  <div class="estado-box" *ngIf="carregando">
+    <p>Carregando seus pedidos...</p>
+  </div>
+
+  <!-- Não logado ou erro -->
+  <div class="estado-box alerta-aviso" *ngIf="!carregando && erroMensagem">
+    <p>{{ erroMensagem }}</p>
+    <a routerLink="/login" class="btn-primario" *ngIf="!clienteLogado">Ir para Login</a>
+  </div>
+
+  <!-- Nenhum pedido -->
+  <div class="estado-box" *ngIf="!carregando && !erroMensagem && pedidos.length === 0">
+    <h3>Você ainda não realizou nenhum pedido</h3>
+    <p>Escolha um relógio na vitrine e finalize sua compra na cesta.</p>
+    <a routerLink="/" class="btn-primario">Explorar Relógios</a>
+  </div>
+
+  <!-- Lista de pedidos -->
+  <div class="lista-pedidos" *ngIf="!carregando && pedidos.length > 0">
+    <article class="pedido-card" *ngFor="let pedido of pedidos">
+      <header class="pedido-card-header">
+        <div class="pedido-meta">
+          <div class="meta-item">
+            <span class="meta-label">Pedido</span>
+            <span class="meta-valor">#{{ pedido.id }}</span>
+          </div>
+          <div class="meta-item" *ngIf="pedido.dataPedido">
+            <span class="meta-label">Data</span>
+            <span class="meta-valor">{{ pedido.dataPedido | date:'dd/MM/yyyy HH:mm' }}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Total</span>
+            <span class="meta-valor destaque-total">{{ formatarMoeda(pedido.total) }}</span>
+          </div>
+        </div>
+
+        <div class="pedido-status-area">
+          <span class="badge-concluido">Confirmado</span>
+          <button
+            type="button"
+            class="btn-email"
+            [disabled]="reenviandoId === pedido.id"
+            (click)="reenviarEmail(pedido.id)">
+            {{ reenviandoId === pedido.id ? 'Enviando...' : 'Reenviar E-mail' }}
+          </button>
+        </div>
+      </header>
+
+      <div class="pedido-card-body">
+        <table class="tabela-itens" *ngIf="pedido.itens && pedido.itens.length > 0">
+          <thead>
+            <tr>
+              <th>Relógio</th>
+              <th class="centro">Qtd.</th>
+              <th class="direita">Unitário</th>
+              <th class="direita">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of pedido.itens">
+              <td>
+                <div class="produto-info">
+                  <img
+                    [src]="item.produto.imagem"
+                    [alt]="item.produto.nome"
+                    class="produto-thumb"
+                  />
+                  <div>
+                    <strong>{{ item.produto.nome }}</strong>
+                    <small *ngIf="item.produto.descritivo">{{ item.produto.descritivo }}</small>
+                  </div>
+                </div>
+              </td>
+              <td class="centro">{{ item.quantidade }}</td>
+              <td class="direita">{{ formatarMoeda(item.precoUnitario) }}</td>
+              <td class="direita">
+                <strong>{{ formatarMoeda(item.precoUnitario * item.quantidade) }}</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </div>
+</section>

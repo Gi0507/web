@@ -1,0 +1,214 @@
+.pagamento-page {
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #eef1f5;
+  min-height: 100vh;
+  color: #2c2c2c;
+  padding-bottom: 3rem;
+}
+
+/* Cabeçalho escuro alinhado à identidade visual da TimeSTOR */
+.pagamento-header {
+  background: linear-gradient(135deg, #2c2c2c 0%, #1b1b1b 100%);
+  color: #ffffff;
+  padding: 28px 0;
+  border-bottom: 3px solid #28a745;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+}
+
+.pagamento-header h2 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.header-subtitle {
+  color: #b8c0c8;
+  font-size: 0.94rem;
+}
+
+.badge-etapa {
+  background-color: rgba(40, 167, 69, 0.16);
+  color: #5ee67d;
+  border: 1px solid rgba(40, 167, 69, 0.45);
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+/* Cards principais */
+.card-loja {
+  background-color: #ffffff;
+  border: 1px solid #e3e7ed;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.06);
+}
+
+/* Mantém o resumo do pedido visível ao rolar no desktop */
+.col-lg-5 .card-loja {
+  position: sticky;
+  top: 88px;
+}
+
+.section-title {
+  color: #1f2428;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-left: 4px solid #28a745;
+  padding-left: 12px;
+  letter-spacing: -0.01em;
+}
+
+/* Cards de seleção da forma de pagamento */
+.metodo-card {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #e2e6ec;
+  border-radius: 10px;
+  background-color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Indicador visual tipo radio no canto superior direito */
+.metodo-card::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #cbd2d9;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.metodo-card:hover {
+  border-color: #28a745;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(40, 167, 69, 0.12);
+}
+
+.metodo-card.active {
+  border-color: #28a745;
+  background-color: #f0fdf4;
+  box-shadow: 0 6px 18px rgba(40, 167, 69, 0.16);
+}
+
+.metodo-card.active::before {
+  border-color: #28a745;
+  background-color: #28a745;
+  box-shadow: inset 0 0 0 3px #ffffff;
+}
+
+.metodo-titulo {
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: #2c2c2c;
+  margin-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+.metodo-card.active .metodo-titulo {
+  color: #1e7e34;
+}
+
+/* Painel interno do método selecionado */
+.detalhe-pagamento {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  animation: fadeSlideIn 0.22s ease-out;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detalhe-pagamento .form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 6px;
+}
+
+.input-loja {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  padding: 0.58rem 0.8rem;
+  font-size: 0.95rem;
+  color: #212529;
+  background-color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-loja::placeholder {
+  color: #9aa5b1;
+}
+
+.input-loja:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.22rem rgba(40, 167, 69, 0.18);
+  outline: none;
+}
+
+/* Caixa PIX */
+.pix-box {
+  background-color: #ffffff;
+  border: 1.5px dashed #28a745;
+  border-radius: 10px;
+}
+
+.pix-code {
+  font-family: 'Consolas', 'Courier New', monospace;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  padding: 8px 12px;
+  border-radius: 6px;
+  word-break: break-all;
+  font-size: 0.84rem;
+}
+
+.pix-box .btn-outline-primary {
+  color: #1e7e34;
+  border-color: #28a745;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.pix-box .btn-outline-primary:hover {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: #ffffff;
+}
+
+/* Lista de itens do resumo lateral */
+.lista-itens {
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.lista-itens::-webkit-scrollbar {
+  width: 5px;
+}
+
+.lista-itens::-webkit-scrollbar-thumb {
+  background-color: rgba(40, 167, 69, 0.4);
+  border-radius: 10px;
+}

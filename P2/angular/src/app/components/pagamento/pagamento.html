@@ -1,0 +1,66 @@
+<div role="form" aria-label="Dados do Cartão" class="detalhe-pagamento p-3">
+  <h6 class="fw-bold mb-3">Dados do Cartão</h6>
+  <div class="row g-3">
+    <div class="col-12">
+      <label class="form-label" for="numeroCartao">Número do Cartão</label>
+      <input
+        id="numeroCartao"
+        type="text"
+        class="form-control input-loja"
+        name="numeroCartao"
+        [(ngModel)]="dadosCartao.numero"
+        placeholder="0000 0000 0000 0000"
+        maxlength="19" />
+    </div>
+
+    <div class="col-12">
+      <label class="form-label" for="nomeTitular">Nome Impresso no Cartão</label>
+      <input
+        id="nomeTitular"
+        type="text"
+        class="form-control input-loja"
+        name="nomeTitular"
+        [(ngModel)]="dadosCartao.titular"
+        placeholder="COMO ESTÁ NO CARTÃO" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label" for="validadeCartao">Validade</label>
+      <input
+        id="validadeCartao"
+        type="text"
+        class="form-control input-loja"
+        name="validade"
+        [(ngModel)]="dadosCartao.validade"
+        placeholder="MM/AA"
+        maxlength="5" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label" for="cvvCartao">CVV</label>
+      <input
+        id="cvvCartao"
+        type="password"
+        class="form-control input-loja"
+        name="cvv"
+        [(ngModel)]="dadosCartao.cvv"
+        placeholder="123"
+        maxlength="4" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label" for="parcelasCartao">Parcelas</label>
+      <select
+        id="parcelasCartao"
+        class="form-select input-loja"
+        name="parcelas"
+        [(ngModel)]="dadosCartao.parcelas">
+        <option [ngValue]="1">1x de {{ total | currency:'BRL' }} sem juros</option>
+        <option [ngValue]="2">2x de {{ (total / 2) | currency:'BRL' }} sem juros</option>
+        <option [ngValue]="3">3x de {{ (total / 3) | currency:'BRL' }} sem juros</option>
+        <option [ngValue]="6">6x de {{ (total / 6) | currency:'BRL' }} sem juros</option>
+        <option [ngValue]="12">12x de {{ (total / 12) | currency:'BRL' }} sem juros</option>
+      </select>
+    </div>
+  </div>
+</div>
